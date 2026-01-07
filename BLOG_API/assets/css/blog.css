@@ -1,0 +1,697 @@
+/**
+ * Blog Module Styles
+ * 移植元のSCSSから変換したCSS
+ */
+
+/* 変数 */
+:root {
+    --primary-color: #ffa000;
+    --secondary-color: #6eca4c;
+    --tertiary-color: #432c16;
+    --quaternary-color: #c1c1c1;
+}
+
+/* =============================================================================
+   投稿一覧リスト (WpPostList)
+   ============================================================================= */
+
+.blog_list_sec,
+.news-content.detail {
+    padding-top: clamp(80px, 20vw, 100px);
+    padding-bottom: clamp(110px, 30vw, 300px);
+}
+
+.news-content.detail .container {
+    margin-bottom: 100px;
+    padding: 10rem 0rem 0 0;
+}
+
+.blog_list_sec .container {
+    padding: clamp(60px, 15vw, 100px) 16px;
+}
+
+.WpPostList {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    column-gap: 1rem;
+    row-gap: 3rem;
+    list-style: none;
+    padding: 0;
+    scroll-margin-top: clamp(200px, 32vw, 250px);
+    margin-bottom: clamp(40px, 7vw, 60px);
+}
+
+.WpPostList .post-item {
+    width: 48.7%;
+    min-height: clamp(280px, 50vw, 400px);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    transition:
+        opacity 0.25s ease-in,
+        transform 0.25s ease-in;
+}
+
+.WpPostList .post-item:hover {
+    transform: translateY(-4px);
+}
+
+.WpPostList .post-item:hover .title {
+    color: var(--primary-color);
+}
+
+.WpPostList .post-item.post-hidden {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    width: 0;
+}
+
+.WpPostList .post-item.post-visible {
+    position: relative;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate3d(0, 0, 0);
+}
+
+.WpPostList .post-item-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
+.WpPostList .post-item-link:hover .image img {
+    transform: scale(1.05);
+}
+
+.WpPostList .post-item .image {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    aspect-ratio: 536 / 300;
+    overflow: hidden;
+    display: block;
+    position: relative;
+}
+
+.WpPostList .post-item .image.no-image {
+    display: grid;
+    place-items: center;
+    background-color: var(--quaternary-color);
+}
+
+.WpPostList .post-item .image.no-image .no-image-placeholder {
+    font-size: clamp(20px, 5vw, 40px);
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.WpPostList .post-item .image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform-origin: center;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+.WpPostList .post-item .content {
+    padding: 1rem 1.5rem 0 0;
+}
+
+.WpPostList .post-item .title {
+    position: relative;
+    width: fit-content;
+    transition: color 0.3s ease;
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    padding-left: 4px;
+}
+
+/* レスポンシブ: タブレット */
+@media (max-width: 768px) {
+    .WpPostList .post-item {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+/* レスポンシブ: スマホ */
+@media (max-width: 480px) {
+    .WpPostList .post-item {
+        width: 100%;
+    }
+
+    .category-filter-list {
+        width: 100% !important;
+    }
+}
+
+/* =============================================================================
+   カテゴリーバッジとメタ情報
+   ============================================================================= */
+
+.meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.meta .date {
+    font-size: clamp(14px, 2vw, 16px);
+    color: #666;
+    font-weight: 700;
+}
+
+.meta .category {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.meta .category-badge {
+    display: inline-block;
+    padding: 0;
+    font-size: clamp(12px, 2vw, 14px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+    background-color: var(--primary-color);
+    width: 9.6rem;
+    line-height: 250%;
+    text-align: center;
+}
+
+.meta .category-badge {
+    background-color: var(--quaternary-color);
+}
+
+.meta .category-badge.blog {
+    background-color: #FF3D01;
+}
+
+.meta .category-badge.news {
+    background-color: #F8B41E;
+}
+
+/* =============================================================================
+   ページネーション
+============================================================================= */
+
+.pagination-container {
+    width: fit-content;
+    margin: 3rem auto 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.pagination-container button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+}
+
+.pagination-container button svg:first-child {
+    margin-right: -1rem;
+}
+
+.pagination-prev,
+.pagination-next {
+    padding: 0.5rem;
+    background-color: transparent;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+}
+
+.pagination-prev:disabled,
+.pagination-next:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.pagination-numbers {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.pagination-number {
+    padding: 0.5rem 0.75rem;
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+    background-color: transparent;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination-number:hover,
+.pagination-prev:hover,
+.pagination-next:hover {
+    transform: scale(1.05);
+    background-color: #FF3D01;
+    color: #fff;
+}
+
+.pagination-number.is-active {
+    color: #000;
+}
+
+.pagination-ellipsis {
+    padding: 0.5rem;
+    color: #999;
+}
+
+/* レスポンシブ: スマホ */
+@media (max-width: 768px) {
+
+    .pagination-prev,
+    .pagination-next,
+    .pagination-number {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.95rem;
+        min-width: 40px;
+        min-height: 40px;
+    }
+}
+
+/* =============================================================================
+   記事詳細ページ
+   ============================================================================= */
+
+.news-content.detail .meta {
+    margin-bottom: 2rem;
+}
+
+.news-content.detail .post-title {
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #333;
+    line-height: 1.4;
+    letter-spacing: 0.05em;
+}
+
+.news-content.detail .featured-image {
+    aspect-ratio: 1100 / 630;
+    overflow: hidden;
+    margin-bottom: 3rem;
+    background-color: #f5f5f5;
+}
+
+.news-content.detail .featured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.news-content.detail .featured-image.no-image {
+    display: grid;
+    place-items: center;
+    background-color: var(--quaternary-color);
+}
+
+.news-content.detail .no-image-placeholder {
+    font-size: clamp(20px, 4vw, 40px);
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.news-content.detail .post-content {
+    font-size: clamp(14px, 2vw, 16px);
+    color: #333;
+    line-height: 2;
+    letter-spacing: 0.05em;
+    padding-bottom: 3rem;
+    margin-bottom: 3rem;
+    min-height: 300px;
+    border-bottom: 2px solid #333;
+}
+
+.news-content.detail .post-content h2,
+.news-content.detail .post-content h3,
+.news-content.detail .post-content h4,
+.news-content.detail .post-content h5,
+.news-content.detail .post-content h6 {
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+}
+
+.news-content.detail .post-content h2 {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.news-content.detail .post-content h3,
+.news-content.detail .post-content h4,
+.news-content.detail .post-content h5,
+.news-content.detail .post-content h6 {
+    font-weight: 600;
+}
+
+.news-content.detail .post-content p {
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    font-size: 1rem;
+    line-height: 200%;
+    color: #1C1C1C;
+    font-family: 'Noto Sans JP';
+}
+
+.news-content.detail .post-content p:not(:last-child) {
+    margin-bottom: 1.5rem;
+}
+
+/* 前後記事ナビゲーション */
+.news-content.detail .nav-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.news-content.detail .nav-link:not(.disabled) {
+    cursor: pointer;
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.news-content.detail .nav-link:not(.disabled):hover .nav-label {
+    color: var(--primary-color);
+}
+
+.news-content.detail .nav-link.disabled {
+    user-select: none;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.news-content.detail .nav-label {
+    font-size: clamp(16px, 2.5vw, 20px);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+/* =============================================================================
+   ブログ詳細ページ (Blog Detail Page)
+   ============================================================================= */
+
+.blog-detail-section {
+    padding: 0;
+    background-color: #fff;
+    scroll-margin-top: -100px;
+}
+
+.news-content.detail {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.news-content.detail .meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: clamp(20px, 3vw, 30px);
+}
+
+.news-content.detail .meta .categories {
+    display: flex;
+    gap: 10px;
+}
+
+.news-content.detail .meta .date {
+    font-size: 14px;
+    color: #666;
+}
+
+.news-content.detail .post-title {
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 700;
+    margin-bottom: clamp(30px, 5vw, 50px);
+    color: #000;
+    line-height: 1.4em;
+    letter-spacing: 0.05em;
+}
+
+.news-content.detail .featured-image {
+    aspect-ratio: 1100 / 630;
+    overflow: hidden;
+    margin-bottom: clamp(40px, 6vw, 60px);
+    background-color: #f5f5f5;
+}
+
+.news-content.detail .featured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.news-content.detail .featured-image.no-image {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1100 / 618;
+    background-color: var(--quaternary-color);
+}
+
+.news-content.detail .no-image-placeholder {
+    width: fit-content;
+    font-size: clamp(18px, 3vw, 28px);
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.news-content.detail .post-content {
+    font-size: 16px;
+    color: #000;
+    line-height: 2em;
+    letter-spacing: 0.05em;
+    padding-bottom: clamp(40px, 6vw, 60px);
+    margin-bottom: clamp(40px, 6vw, 60px);
+    min-height: clamp(150px, 39vw, 300px);
+    border-bottom: 2px solid #000;
+}
+
+.news-content.detail .post-content h2,
+.news-content.detail .post-content h3,
+.news-content.detail .post-content h4,
+.news-content.detail .post-content h5,
+.news-content.detail .post-content h6 {
+    margin-bottom: clamp(15px, 3vw, 25px);
+    margin-top: clamp(30px, 5vw, 40px);
+    letter-spacing: 0.05em;
+}
+
+.news-content.detail .post-content p {
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5em;
+}
+
+.news-content.detail .post-content h2 {
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.news-content.detail .post-content h3,
+.news-content.detail .post-content h4,
+.news-content.detail .post-content h5,
+.news-content.detail .post-content h6 {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+/* ナビゲーション */
+.news-content.detail .post-navigation {
+    margin-top: 40px;
+}
+
+.news-content.detail .nav-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(30px, 5vw, 60px);
+}
+
+.news-content.detail .nav-next,
+.news-content.detail .nav-previous {
+    flex: 0 0 auto;
+}
+
+.news-content.detail .back-to-list {
+    flex: 0 0 auto;
+}
+
+.news-content.detail .nav-link {
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.news-content.detail .nav-link:not(.disabled):hover .nav-label {
+    color: var(--primary-color);
+}
+
+.news-content.detail .nav-link.disabled {
+    user-select: none;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.news-content.detail .nav-label {
+    font-size: clamp(14px, 2vw, 18px);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #000;
+    transition: color 0.3s ease;
+}
+
+/* 一覧に戻るボタン */
+.news-content.detail .back-to-list {
+    position: relative;
+    /* z-index: 10; */
+    /* width: clamp(200px, 45vw, 350px);
+    height: clamp(60px, 12vw, 90px); */
+    /* background-color: #fff; */
+    /* border: solid 2px var(--primary-color); */
+    /* overflow: hidden; */
+    transition: all 0.3s ease-in;
+}
+
+.news-content.detail .back-to-list:hover::before {
+    transform: translate3d(-100%, 0, 0);
+}
+
+.news-content.detail .back-to-list:hover .button-text {
+    color: var(--primary-color);
+}
+
+/* .news-content.detail .back-to-list::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate3d(0, 0, 0);
+    z-index: -1;
+    display: block;
+    width: calc(100% + 28px);
+    height: 100%;
+    clip-path: polygon(0 0, 100% 0, 93% 100%, 0 100%);
+    background-color: var(--primary-color);
+    transition: all 0.3s ease-in;
+} */
+
+.news-content.detail .back-to-list-button {
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-size: clamp(16px, 3vw, 24px);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-align: center;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in;
+}
+
+.news-content.detail .back-to-list-button .button-text {
+    font-size: clamp(16px, 3vw, 24px);
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.news-content.detail .back-to-list-button .button-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.news-content.detail .back-to-list-button .button-arrow svg {
+    width: 18px;
+    height: auto;
+    fill: #fff;
+    transition: fill 0.3s ease;
+}
+
+.news-content.detail .back-to-list-button:hover .button-arrow svg path {
+    fill: var(--primary-color);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .blog-detail-section {
+        padding: 40px 0;
+    }
+
+    .news-content.detail .nav-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .news-content.detail .nav-next,
+    .news-content.detail .nav-previous,
+    .news-content.detail .back-to-list {
+        width: 100%;
+        text-align: center;
+    }
+
+    .news-content.detail .back-to-list-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* トラッキングピクセル（1px画像）を非表示 */
+p>img[width="1"][height="1"] {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* API投稿記事の空白要素対策 */
+.wp-block-spacer,
+p:empty,
+div:empty,
+figure.wp-block-image:empty {
+    display: none;
+}

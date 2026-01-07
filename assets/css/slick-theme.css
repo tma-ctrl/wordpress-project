@@ -1,0 +1,385 @@
+@charset 'UTF-8';
+
+#event-slide {
+    display: none;
+}
+
+#event-slide.slick-initialized {
+    display: block;
+}
+
+#top-slide {
+    display: none;
+}
+
+#top-slide.slick-initialized {
+    display: block;
+}
+
+.slick-loading .slick-list {
+    background: #fff url("../img/ajax-loader.gif") center center no-repeat;
+}
+
+.slick-slide:focus {
+    outline: none;
+}
+
+.slick-slider {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.slick-list,
+.slick-track {
+    height: 100%;
+}
+
+/* --------------------------------------------------------------------------- */
+#fv-boxe {
+    position: relative;
+}
+
+#fv-boxe .slick-prev,
+#fv-boxe .slick-next {
+    position: absolute;
+    /* top: 30%; */
+    z-index: 3;
+    cursor: pointer;
+    color: transparent;
+    border: 0;
+    outline: none;
+    transition: filter 0.3s ease;
+}
+
+@media (min-width: 1440px) {
+    #fv-boxe .slick-prev {
+        left: 14.5%;
+        top: 50%;
+        transform: translateY(-50%);
+        background: url(../img/icon/prev_arrow.png) center center / contain no-repeat;
+        width: 3.43rem;
+        height: 3.43rem;
+    }
+
+    #fv-boxe .slick-next {
+        right: 14.5%;
+        top: 50%;
+        transform: translateY(-50%);
+        background: url(../img/icon/next_arrow.png) center center / contain no-repeat;
+        width: 3.43rem;
+        height: 3.43rem;
+    }
+}
+
+@media (max-width: 1440px) {
+    #fv-boxe .slick-prev {
+        left: 14.5%;
+        top: 50%;
+        transform: translateY(-50%);
+        background: url(../img/icon/prev_arrow.png) center center / contain no-repeat;
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    #fv-boxe .slick-next {
+        right: 14.5%;
+        top: 50%;
+        transform: translateY(-50%);
+        background: url(../img/icon/next_arrow.png) center center / contain no-repeat;
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+}
+
+@media (max-width: 767px) {
+    #fv-boxe .slick-prev {
+        background: url(../img/icon/prev_arrow.png) center center / contain no-repeat;
+        left: 0rem;
+        top: 50%;
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    #fv-boxe .slick-next {
+        background: url(../img/icon/next_arrow.png) center center / contain no-repeat;
+        right: 0rem;
+        top: 50%;
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+}
+
+#fv-boxe .slick-prev:hover,
+#fv-boxe .slick-next:hover {
+    filter: invert(1);
+    transition: filter 0.3s ease;
+}
+
+#fv-boxe .slick-dots {
+    position: absolute;
+    bottom: -35px !important;
+    width: 100%;
+    text-align: center;
+}
+
+#fv-boxe .slick-dots li {
+    position: relative;
+    display: inline-block;
+}
+
+#fv-boxe .slick-dots li button {
+    display: block;
+    width: 8px;
+    height: 8px;
+    cursor: pointer;
+    color: transparent;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    background: #d8d8d8;
+    margin: 0 6px;
+}
+
+#fv-boxe .slick-dots li button:hover,
+#fv-boxe .slick-dots li button:focus {
+    outline: none;
+}
+
+/*----------------------------blog------------------------*/
+
+.slick-dots {
+    display: flex !important;
+    justify-content: flex-start;
+    /* gap: 10px; */
+    padding: 20px 0;
+    direction: ltr;
+    margin-top: 1rem;
+}
+
+.slick-dots>li {
+    list-style: none;
+    margin-left: 0;
+}
+
+.slick-progress-dot {
+    display: block;
+    width: 100%;
+    height: 0.3rem;
+    background: #ccc;
+    transform: skewX(-45deg);
+    overflow: hidden;
+    position: relative;
+}
+
+.slick-progress-dot .progress-bar {
+
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0%;
+    background: #FF3D01;
+    transition: width 5s linear;
+}
+
+.slick-dots li.slick-active .progress-bar {
+    width: 100%;
+}
+
+.slick-dots li:not(.slick-active) .progress-bar {
+    background: transparent;
+}
+
+/*----------------------------voice------------------------*/
+#voice-slider {
+    position: relative;
+}
+
+#voice-slider .slick-prev,
+#voice-slider .slick-next {
+    position: absolute;
+    /* top: 30%; */
+    z-index: 3;
+    cursor: pointer;
+    color: transparent;
+    border: 0;
+    outline: none;
+    transition: filter 0.3s ease;
+    background-color: #FFFFFF;
+    border: 1px solid #FF3D01;
+}
+
+@media (min-width: 1440px) {
+    #voice-slider .slick-prev {
+        left: 20.5%;
+        top: 52%;
+        transform: translateY(-50%);
+        /* background: url(../img/icon/prev_arrow.png) center center / contain no-repeat; */
+        width: 3.43rem;
+        height: 3.43rem;
+    }
+
+    #voice-slider .slick-prev::before {
+        content: '';
+        display: block;
+        position: absolute;
+        background: url(../img/icon/prev_arrow.png) center center / contain no-repeat;
+        width: 1.5rem;
+        height: 1.5rem;
+        top: 28%;
+        left: 22%;
+    }
+
+    #voice-slider .slick-next {
+        right: 20.5%;
+        top: 52%;
+        transform: translateY(-50%);
+        /* background: url(../img/icon/next_arrow.png) center center / contain no-repeat; */
+        width: 3.43rem;
+        height: 3.43rem;
+    }
+
+    #voice-slider .slick-next::before {
+        content: '';
+        display: block;
+        position: absolute;
+        background: url(../img/icon/next_arrow.png) center center / contain no-repeat;
+        width: 1.5rem;
+        height: 1.5rem;
+        top: 28%;
+        left: 30%;
+    }
+}
+
+@media (max-width: 1440px) {
+    #voice-slider .slick-prev {
+        left: 5.5%;
+        top: 50%;
+        transform: translateY(-50%);
+        /* background: url(../img/icon/prev_arrow.png) center center / contain no-repeat; */
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    #voice-slider .slick-prev::before {
+        content: '';
+        display: block;
+        position: absolute;
+        background: url(../img/icon/prev_arrow.png) center center / contain no-repeat;
+        width: 1.5rem;
+        height: 1.5rem;
+        top: 28%;
+        left: 22%;
+    }
+
+    #voice-slider .slick-next {
+        right: 5.5%;
+        top: 50%;
+        transform: translateY(-50%);
+        /* background: url(../img/icon/next_arrow.png) center center / contain no-repeat; */
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    #voice-slider .slick-next::before {
+        content: '';
+        display: block;
+        position: absolute;
+        background: url(../img/icon/next_arrow.png) center center / contain no-repeat;
+        width: 1.5rem;
+        height: 1.5rem;
+        top: 28%;
+        left: 30%;
+    }
+}
+
+@media (max-width: 767px) {
+    #voice-slider .slick-prev {
+        /* background: url(../img/icon/prev_arrow.png) center center / contain no-repeat; */
+        left: 2rem;
+        top: 55%;
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    #voice-slider .slick-prev::before {
+        content: '';
+        display: block;
+        position: absolute;
+        background: url(../img/icon/prev_arrow.png) center center / contain no-repeat;
+        width: 1.2rem;
+        height: 1.2rem;
+        top: 28%;
+        left: 22%;
+    }
+
+    #voice-slider .slick-next {
+        /* background: url(../img/icon/next_arrow.png) center center / contain no-repeat; */
+        right: 2rem;
+        top: 55%;
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    #voice-slider .slick-next::before {
+        content: '';
+        display: block;
+        position: absolute;
+        background: url(../img/icon/next_arrow.png) center center / contain no-repeat;
+        width: 1.2rem;
+        height: 1.2rem;
+        top: 28%;
+        left: 30%;
+    }
+}
+
+#voice-slider .slick-prev:hover::before,
+#voice-slider .slick-next:hover::before {
+    filter: brightness(0) invert(1);
+    transition: filter 0.3s ease;
+}
+
+#voice-slider .slick-prev:hover,
+#voice-slider .slick-next:hover {
+    background-color: #FF3D01;
+    border: 1px solid #FFFFFF;
+    /* filter: brightness(0) invert(1);
+    transition: filter 0.3s ease; */
+}
+
+#voice-slider .slick-dots {
+    position: absolute;
+    bottom: -35px !important;
+    width: 100%;
+    text-align: center;
+}
+
+#voice-slider .slick-dots li {
+    position: relative;
+    display: inline-block;
+    list-style: none;
+}
+
+#voice-slider .slick-dots li button {
+    display: block;
+    width: 8px;
+    height: 8px;
+    cursor: pointer;
+    color: transparent;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    background: #d8d8d8;
+    margin: 0 6px;
+}
+
+#voice-slider .slick-dots li button:hover,
+#voice-slider .slick-dots li button:focus {
+    outline: none;
+}
+
+#voice-slider>.slick-list>.slick-track>.slick-slide.blur-effect {
+    opacity: 50%;
+}
