@@ -378,8 +378,11 @@
                 </div>
             </div>
             
-            <div class="access-overlay-text">TENSHIN TENSHIN TENSHIN</div>
+
         </div>
+        <div class="access-overlay-text">
+                <span class="access-overlay-text-inner">TENSHIN TENSHIN TENSHIN TENSHIN TENSHIN TENSHIN TENSHIN TENSHIN TENSHIN TENSHIN</span>
+       </div>
     </div>
 </section>
 <?php get_footer() ?>

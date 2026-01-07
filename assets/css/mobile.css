@@ -112,13 +112,15 @@
         max-width: 100%;
         width: auto;
         position: relative;
+        background-color: #FFE5E5;
     }
 
     .footer-cta-group {
         grid-template-columns: 1fr;
         padding: 2rem 0;
-        width: 97%;
+        width: 90%;
         gap: 2rem;
+        background-color: #FFE5E5;
     }
 
     .footer-cta-block {
@@ -127,6 +129,9 @@
         text-decoration: none;
         color: inherit;
         transition: opacity 0.3s ease;
+        background-color: #FFFFFF;
+        padding: 2rem 0;
+
     }
 
     .footer-cta-block:hover {
@@ -979,13 +984,13 @@
 
     .faq-header-title {
         font-size: 1rem;
-        white-space: nowrap;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
+        white-space: pre-line;
+        /* display: -webkit-box; */
+        /* -webkit-line-clamp: 2; */
         -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        /* overflow: hidden; */
+        /* text-overflow: ellipsis; */
+        line-height: 140%;
     }
 
     .index-faq-list dl {
@@ -1133,7 +1138,6 @@
     }
 
     .bubble-concerns {
-        flex-direction: column;
         gap: 0.75rem;
     }
 
@@ -1144,6 +1148,15 @@
         display: block;
         cursor: pointer;
         transition: all 0.3s ease;
+        white-space: wrap;
+        font-size: 10px;
+        line-height: 120%;
+
+    }
+
+    .bubble-title {
+        font-size: 16px;
+        margin-bottom: 1rem;
     }
 
     .concern-box:hover {
@@ -1494,11 +1507,14 @@
         font-size: clamp(1.5rem, calc(1.5rem + 1.5 * ((100vw - 375px) / 393)), 3rem);
         bottom: 0.5rem;
         -webkit-text-stroke: 1px #FF7301;
+    }
+
+    .access-overlay-text-inner {
         animation: marquee-right-to-left 15s linear infinite;
     }
 
     .about-event {
-        padding: clamp(3.5rem, calc(3.5rem + 1.5 * ((100vw - 375px) / 393)), 5rem) 0;
+        padding: clamp(2rem, calc(2rem + 1 * ((100vw - 375px) / 393)), 3rem) 0;
     }
 
     .about-event-container {
@@ -1529,20 +1545,23 @@
         grid-template-columns: 1fr;
         grid-template-rows: auto;
         gap: clamp(1.5rem, calc(1.5rem + 0.5 * ((100vw - 375px) / 393)), 2rem);
-        clip-path: polygon(0 7%, 100% 0%, 100% 100%, 0 100%);
+        clip-path: none;
     }
 
     .about-event-content-right {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
-        clip-path: polygon(0 0, 100% 0%, 100% 91%, 0 100%);
+        clip-path: none;
         top: 0;
+        display: flex;
+        flex-direction: column-reverse;
     }
 
     .event-main-image {
         grid-row: 1;
         grid-column: 1;
         height: clamp(250px, calc(250px + 50 * ((100vw - 375px) / 393)), 300px);
+        clip-path: polygon(0 9%, 100% 0%, 100% 91%, 0 100%);
     }
 
     .event-christmas-tests {
@@ -1583,6 +1602,7 @@
 
     .footer-cta-section {
         padding-top: 5.3rem;
+        background-color: #FFE5E5;
     }
 
     /* Course Section Buttons - Mobile */
@@ -2275,14 +2295,24 @@
 
     .about-event-slider {
         position: relative;
-        height: auto;
+        height: 150px;
+        z-index: 5;
+        bottom: -2rem;
+    }
+
+    .about-event-slider .slick-list {
+        overflow: visible;
     }
 
     .event_item {
         max-width: 100%;
         width: auto;
+        height: 300px;
     }
 
+    .footer-bottom {
+        padding: 2rem 0 4rem;
+    }
 
 
 }

@@ -122,11 +122,58 @@
     <meta name="twitter:title" content="<?php echo esc_attr($page_title); ?>">
     <meta name="twitter:description" content="<?php echo esc_attr(wp_strip_all_tags($page_description)); ?>">
     <meta name="twitter:image" content="<?php echo esc_url($page_image); ?>">
+    
+    <!-- ページタイトル（ブラウザタブに表示） -->
+    <?php
+    // タイトルの設定
+    $browser_title = '';
+    if (is_front_page()) {
+        $browser_title = '天心塾';
+    } else {
+        // ページタイトルを取得
+        $page_name = '';
+        if (is_singular()) {
+            $page_name = get_the_title();
+        } elseif (is_home()) {
+            $page_name = get_the_title(get_option('page_for_posts', true));
+            if (empty($page_name)) {
+                $page_name = 'ブログ';
+            }
+        } elseif (is_archive()) {
+            if (is_category()) {
+                $page_name = single_cat_title('', false);
+            } elseif (is_tag()) {
+                $page_name = single_tag_title('', false);
+            } elseif (is_author()) {
+                $page_name = get_the_author();
+            } elseif (is_post_type_archive()) {
+                $page_name = post_type_archive_title('', false);
+            } elseif (is_tax()) {
+                $page_name = single_term_title('', false);
+            } else {
+                $page_name = get_the_archive_title();
+            }
+        } elseif (is_search()) {
+            $page_name = '検索結果: ' . get_search_query();
+        } elseif (is_404()) {
+            $page_name = 'ページが見つかりません';
+        } else {
+            $page_name = !empty($page_title) ? $page_title : '天心塾';
+        }
+        
+        if (empty($page_name)) {
+            $page_name = '天心塾';
+        }
+        
+        $browser_title = esc_html($page_name) . '｜天心塾';
+    }
+    ?>
+    <title><?php echo $browser_title; ?></title>
   <?php
     wp_head(); 
   ?>
 </head>
-<body id="page-top">
+<body id="page-top" class="loading-active">
     <!-- ロード画面 -->
 <div id="loading-screen" class="loading-screen">
   <div class="loading-screen-content">
@@ -148,7 +195,7 @@
                         <nav class="header-navigation">
                             <ul class="nav-menu-list">
                                 <li class="nav-item">
-                                <a href="<?php echo home_url(); ?>" class="nav-link">
+                                <a href="<?php echo home_url(); ?>/strength" class="nav-link">
                                     <div class="nav-icon">
                                     <img src="<?php echo get_template_directory_uri(); ?>/assets/img/icon/icon_1.png" alt="ホーム">
                                     </div>

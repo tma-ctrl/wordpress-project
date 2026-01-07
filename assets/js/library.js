@@ -228,7 +228,7 @@ $(function() {
     var $eventSlider = $("#event-slider");
 
     function updateStairsEffect() {
-        var $centerSlide = $eventSlider.find('.slick-center');
+        var $centerSlide = $eventSlider.find('.slick-current');
         if ($centerSlide.length === 0) return;
 
         // Remove all stairs classes
@@ -240,7 +240,7 @@ $(function() {
 
         // Find the center slide's position in the DOM order
         $allSlides.each(function(index) {
-            if ($(this).hasClass('slick-center')) {
+            if ($(this).hasClass('slick-current')) {
                 centerPosition = index;
                 return false; // break the loop
             }
@@ -322,6 +322,29 @@ $(function() {
 $(function() {
     var $eventSliderSp = $("#event-slider-sp");
 
+    function updateSlidePosition() {
+        var $currentSlide = $eventSliderSp.find('.slick-current');
+        if ($currentSlide.length === 0) return;
+
+        // Reset all slides
+        $eventSliderSp.find('.slick-slide').css('top', '');
+
+        // Set center slide to standard level
+        $currentSlide.css('top', '0');
+
+        // Set left slide to 5%
+        var $leftSlide = $currentSlide.prev('.slick-slide');
+        if ($leftSlide.length) {
+            $leftSlide.css('top', '8%');
+        }
+
+        // Set right slide to -5%
+        var $rightSlide = $currentSlide.next('.slick-slide');
+        if ($rightSlide.length) {
+            $rightSlide.css('top', '-8%');
+        }
+    }
+
     function initEventSliderSp() {
         var windowWidth = $(window).width();
 
@@ -329,7 +352,7 @@ $(function() {
         if (windowWidth <= 768) {
             if (!$eventSliderSp.hasClass('slick-initialized')) {
                 $eventSliderSp.slick({
-                    slidesToShow: 1,
+                    slidesToShow: 2.2,
                     slidesToScroll: 1,
                     arrows: false,
                     dots: false,
@@ -338,13 +361,22 @@ $(function() {
                     speed: 1500,
                     cssEase: 'ease-in-out',
                     infinite: true,
-                    centerMode: true,
-                    centerPadding: '0',
+                    centerMode: false,
+                    centerPadding: '10%',
                 });
+            }
+            // Attach/update event listeners (remove old ones first to prevent duplicates)
+            $eventSliderSp.off('init reInit afterChange').on('init reInit afterChange', function() {
+                setTimeout(updateSlidePosition, 50);
+            });
+            // Initial call if already initialized
+            if ($eventSliderSp.hasClass('slick-initialized')) {
+                setTimeout(updateSlidePosition, 50);
             }
         } else {
             // Destroy slider if it exists on desktop
             if ($eventSliderSp.hasClass('slick-initialized')) {
+                $eventSliderSp.off('init reInit afterChange');
                 $eventSliderSp.slick('unslick');
             }
         }

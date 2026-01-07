@@ -412,6 +412,7 @@ $(document).ready(function() {
 
                 // Show fixed_item elements after loading screen starts hiding
                 $('body').removeClass('loading-active');
+                $('body').addClass('loading-complete');
 
                 // Remove from DOM after transition
                 setTimeout(function() {
@@ -444,6 +445,7 @@ $(document).ready(function() {
         if (loadingScreen.length > 0) {
             loadingScreen.addClass('loading-screen-hidden');
             $('body').removeClass('loading-active');
+            $('body').addClass('loading-complete');
             setTimeout(function() {
                 loadingScreen.remove();
                 $('body').css('overflow', '');

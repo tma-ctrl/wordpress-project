@@ -18,7 +18,7 @@
                 </p>
                 <div class="top-img-2">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/img/top/img_pc.png" alt="代木塗装工業" class="pc">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/top/img_2.png" alt="代木塗装工業" class="sp">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/top/img_pc.png" alt="代木塗装工業" class="sp">
             </div>
         </div>
       
@@ -354,7 +354,7 @@
     </div>
     <div class="message-slide">
     <p class='reason-marquee'>
-        <span>生きる事を尊び　学ぶ事喜ぶ　生きる事を尊び　学ぶ事喜ぶ</span>
+        <span class="reason-marquee-inner">生きる事を尊び　学ぶ事喜ぶ　生きる事を尊び　学ぶ事喜ぶ　生きる事を尊び　学ぶ事喜ぶ　生きる事を尊び　学ぶ事喜ぶ</span>
     </p>
     <?php 
                 $args = array(
